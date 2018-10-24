@@ -22,7 +22,7 @@ $(document).ready(function () {
     let newDare = {
       name: $('#name').val().trim(),
       description: $('#description').val().trim(),
-      boardname: $('#description').val().trim(),
+      boardname: $('#boardname').val().trim(),
       bounty: $('#value').val()
     }
 

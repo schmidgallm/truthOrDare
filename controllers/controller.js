@@ -5,8 +5,6 @@ const router = express.Router();
 // Require models to query databse
 const db = require('../models/dares');
 
-/* BEGIN ROUTES */
-
 // Home Route
 router.get('/', (req, res) => {
     res.render('index');
@@ -27,6 +25,23 @@ router.get('/dare', (req, res) => {
         console.log(err);
     });
 });
+
+// render specified boarname(category) to category.handlebars
+router.get('/dare/api/board/:boardname', (req, res) => {
+    db.find({
+        boardname: req.params.boardname
+    })
+    .then( dbDares => {
+        let dareObj = {
+            dares: dbDares
+        }
+        // render dareObj to category.handlebars
+        res.render('category', dareObj)
+    })
+    .catch( err => {
+        console.log(err);
+    })
+})
 
 // Return all dares to main API route
 router.get('/dare/api', (req, res) => {
@@ -81,14 +96,9 @@ router.put('/dare/api/claimed/:id', (req, res) => {
 
 // delete route that will delete bounty if bounty = true
 router.delete('/dare/api/claimed/:id', (req, res) => {
-    db.deleteOne({
-        id: req.body.id
-    })
-    .then( dbDare => {
-        console.log(dbDare);
-    })
-    .catch( err => {
-        console.log(err);
+    db.findByIdAndRemove(req.body.id, (err, body) => {
+        if (err) console.log(error);
+        console.log(body);
     })
 })
 
