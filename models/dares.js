@@ -1,35 +1,33 @@
-module.exports = function(sequelize, DataTypes){
-    const Dares = sequelize.define('Dares', {
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
-        },
-        description: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
-        },
-        boardname: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                len: [1]
-            }
-        },
-        value: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            defaultValue: 0
-        },
-        state: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: false
-        }
-    });
-    return Dares;
-}
+// Dependencies
+const mongoose = require('mongoose');
+
+// Save ref to to schema constructor
+const Schema = mongoose.Schema;
+
+const DareSchema = new Schema({
+    name: {
+        type: String,
+        trim: true,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    bounty: {
+        type: Number,
+        required: true
+    },
+    boardname: {
+        type: String,
+        required: true
+    },
+    claimed: {
+        type: Boolean,
+        default: false
+    }
+});
+
+const Dares = mongoose.model('contact', DareSchema);
+
+module.exports = Dares;

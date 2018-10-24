@@ -12,27 +12,32 @@
                         </div>
                     </div>
 
-                    <div class="row board-links">
-                        <div class="col-12">
-                            <h3>Dare Boards</h3>
-                            <div class="board-wrapper">
-                                {{#each board}}
-                                <a href="/{{boardname}}">{{boardname}}</a>
-                                {{/each}}
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="row posting">
                         <div class="col-12">
                             <h3>Create Dare</h3>
                             <form>
-                                <input id="name" type="text" placeholder="name">
-                                <input id="description" type="text" placeholder="description">
-                                <input id="category" type="text" placeholder="category">
-                                <input id="value" type="text" placeholder="value">
-                                <button id="newDare" type="submit" class="btn btn-primary">Create Dare</button>
+                                <input class="my-2" id="name" type="text" placeholder="name">
+                                <input class="my-2" id="description" type="text" placeholder="description">
+                                <input class="my-2" id="boardname" type="text" placeholder="category">
+                                <input class="my-2" id="value" type="text" placeholder="value">
+                                <button id="newDare" type="submit" class="btn btn-primary d-block my-2">Create Dare</button>
                             </form>
+                            <button id="find" class="btn btn-primary d-block my-2">Approve Dares</button>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row board-links">
+                        <div class="col-12">
+                            <h3>Dare Boards</h3>
+                            <div class="board-wrapper">
+                                {{#each dares}}
+                                <div>
+                                    <a class="btn btn-outline-light my-2 slideInLeft animated" href="/{{boardname}}">{{boardname}}</a>
+                                </div>
+                                {{/each}}
+                            </div>
                         </div>
                     </div>
 
@@ -43,74 +48,21 @@
 
             <div class="col-lg-9 bg-light dare-div">
                 <div class="row dares">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="http://placehold.it/200x200" alt="Card image cap">
+                    {{#each dares}}
+                    <div class="col-3">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title">{{name}}</h5>
+                            <hr>
+                            <p class="card-text">{{description}}</p>
+                            <p class="card-text">{{value}}</p>
+                            <a href="#" id="{{id}}" class="doit btn btn-primary">Do it!</a>
                         </div>
                     </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="http://placehold.it/200x200" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="http://placehold.it/200x200" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="http://placehold.it/200x200" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="http://placehold.it/200x200" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="http://placehold.it/200x200" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="http://placehold.it/200x200" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="http://placehold.it/200x200" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                        </div>
-                    </div>
-                    
+                    {{/each}}
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>
 </div>
