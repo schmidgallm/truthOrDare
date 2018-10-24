@@ -22,7 +22,7 @@
                                 <input class="my-2" id="value" type="text" placeholder="value">
                                 <button id="newDare" type="submit" class="btn btn-primary d-block my-2">Create Dare</button>
                             </form>
-                            <button id="find" class="btn btn-primary d-block my-2">Approve Dares</button>
+                            <a href="/dare/api/claimed" id="find" class="btn btn-primary d-block my-2">Approve Dares</a>
                         </div>
                     </div>
 
@@ -49,7 +49,7 @@
             <div class="col-lg-9 bg-light dare-div">
                 <div class="row dares">
                     {{#each dares}}
-                    <div class="col-3">
+                    <div class="col-3 my-2">
                         <div class="card-body">
                             <h5 class="card-title">{{name}}</h5>
                             <hr>

@@ -1,6 +1,14 @@
 /* Home Route Styles */
 
+.btn-primary {
+    background-color: #DD99B7;
+    border-collapse: rgb(228, 94, 152);
+}
 
+.btn-primary:hover {
+    background-color: rgb(235, 88, 151);
+    border-collapse: rgb(245, 63, 142);
+}
 .wrapper {
     position: absolute;
     top: 0;

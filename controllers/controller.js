@@ -1,7 +1,6 @@
 // Dependencies
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
 
 // Require models to query databse
 const db = require('../models/dares');
@@ -68,6 +67,31 @@ router.get('/dare/api/claimed', (req, res) => {
     });
 });
 
+// put route to change dare from approved back to not approved
+router.put('/dare/api/claimed/:id', (req, res) => {
+    db.findByIdAndUpdate(req.body.id,
+        {$set: {claimed: false}})
+            .then( dbDare => {
+                console.log(dbDare)
+            })
+            .catch( err => {
+                console.log(err);
+            })
+})
+
+// delete route that will delete bounty if bounty = true
+router.delete('/dare/api/claimed/:id', (req, res) => {
+    db.deleteOne({
+        id: req.body.id
+    })
+    .then( dbDare => {
+        console.log(dbDare);
+    })
+    .catch( err => {
+        console.log(err);
+    })
+})
+
 // API Post Route -- response returns json data
 router.post('/dare/api/:darename/:boardname', (req, res) => {
     db.create({
@@ -80,12 +104,6 @@ router.post('/dare/api/:darename/:boardname', (req, res) => {
     });
 });
 
-// delete route that will delete bounty if bounty = true
-router.delete('/dare/api/:id', (req, res) => {
-
-})
-
-/* END ROUTES */
 
 
 
